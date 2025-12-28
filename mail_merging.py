@@ -16,9 +16,16 @@
 # Hope you can make it.
 # Angela"""
 
-invited_names = []
-with open("../Input/Names/invited_names.txt") as names:
-    content = names.read()
+PLACEHOLDER = "[name]"
+
+with open("./Input/Names/invited_names.txt") as names_file:
+    names = names_file.readlines()
+
+with open("./Input/Letters/starting_letter.docx") as letter_file:
+    letter_contents = letter_file.read()
     for name in names:
-        invited_names.append(name)
-print(invited_names)
+        stripped_name = name.strip()
+        new_letter = letter_contents.replace(PLACEHOLDER, stripped_name)
+        with open(f"./Output/ReadyToSend/letter_for_{stripped_name}.docx", mode="w") as completed_letters:
+            completed_letters.write(new_letter)
+
