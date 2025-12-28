@@ -13,9 +13,9 @@ def calculate(n, **kwargs):
 
 calculate(2, multiply=5)
 
-# def calculate(n, **kwargs):
-#     n += kwargs.get("add")
-#     n *= kwargs.get("multiply")
-#     print(n)
+def calculate(n, **kwargs):
+    n += kwargs.get("add")
+    n *= kwargs.get("multiply")
+    print(n)
 
-# calculate(2, multiply=5)
+calculate(2, multiply=5)
