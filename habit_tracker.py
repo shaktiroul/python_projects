@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 USERNAME = "shakti9"
 TOKEN = "bcsjdcghcgbui5876"
@@ -35,7 +36,28 @@ print(response.text)
 
 pixel_creation_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
 
+today = datetime.now()
+
 pixel_data = {
-    "date": "20250117"
-    "quantity": 
+    "date": today.strftime("%Y%m%d"),
+    "quantity": input("How many Kms did you cycle today? "),
 }
+
+response = requests.post(url=pixel_creation_endpoint, json=pixel_data, headers=headers)
+print(response.text)
+
+# UPDATING DATA
+# update_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+# new_pixel_data = {
+#     "quantity": "4.5"
+# }
+
+# response = requests.put(url=update_endpoint, json=new_pixel_data, headers=headers)
+# print(response.text)
+
+# DELETING DATA
+# delete_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+# response = requests.delete(url=delete_endpoint, headers=headers)
+# print(response.text)
+
+
